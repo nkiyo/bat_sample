@@ -11,4 +11,11 @@ echo %CUR_DATE%
 for /f "tokens=3*" %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ProductName ^| find "ProductName"') do set WIN_VER=%%i %%j
 echo %WIN_VER%
 
+:: /f => force
+:: /im => specify image name (= execution name)
+:: taskkill /f /im msedge.exe
+:: wmic process where name="msedge.exe" call terminate
 
+
+
+:: TODO wmic, netsh, route
