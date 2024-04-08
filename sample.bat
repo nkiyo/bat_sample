@@ -16,6 +16,7 @@ echo %WIN_VER%
 :: taskkill /f /im msedge.exe
 :: wmic process where name="msedge.exe" call terminate
 
-
+:: すべてのインストールされた製品に対して情報を表示
+wmic product get name, vendor, version /all
 
 :: TODO wmic, netsh, route
