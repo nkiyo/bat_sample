@@ -17,6 +17,14 @@ echo %WIN_VER%
 :: wmic process where name="msedge.exe" call terminate
 
 :: すべてのインストールされた製品に対して情報を表示
-wmic product get name, vendor, version /all
+:: wmic product get name, vendor, version /all
 
-:: TODO wmic, netsh, route
+:: Equivalent to linux diff
+fc hoge.txt huga.txt
+if %errorlevel% neq 0 (
+  echo files are different.
+)
+:: one-liner version
+:: FC File1.txt File2.txt >NUL && Echo Same || Echo Different or error
+
+:: TODO wmic, netsh, route, forfiles
