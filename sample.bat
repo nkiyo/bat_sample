@@ -28,3 +28,17 @@ if %errorlevel% neq 0 (
 :: FC File1.txt File2.txt >NUL && Echo Same || Echo Different or error
 
 :: TODO wmic, netsh, route, forfiles
+
+:: Wait for 60 seconds or until the "simon" signal is received on the local computer:
+:: waitfor /t 60 simon
+:: Activate the "simon" signal on the local computer:
+:: waitfor /s %computername% /si simon
+
+sort hoge.txt
+sort /unique hoge.txt
+dir /b | sort
+
+echo before sleep 2sec
+timeout /t 2
+echo after sleep 2sec
+
