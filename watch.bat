@@ -1,11 +1,16 @@
-@ECHO OFF
-echo %0
-echo %1
-echo %*
-for /f "tokens=1,* delims= " %%a in ("%*") do set ALL_BUT_FIRST=%%b
-echo all but first: %ALL_BUT_FIRST%
-:: :loop
-::   cls
-::   %*
-::   timeout /t 5 > NUL
-:: goto loop
+:: https://superuser.com/a/191068 の改良版
+:: 実行例: watch.bat 2 dir *.txt
+@echo off
+cd %~d0
+
+set sec=%1
+:: 第2引数以降(=コマンド部分)のを取得する
+:: https://stackoverflow.com/a/26732879/6389347
+for /f "tokens=1,* delims= " %%a in ("%*") do set command=%%b
+
+:loop
+  cls
+  echo Every %sec%s: %command% at %date% %time%
+  %command%
+  timeout /t %sec% > NUL
+goto loop
