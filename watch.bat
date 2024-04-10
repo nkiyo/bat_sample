@@ -3,6 +3,14 @@
 @echo off
 cd %~d0
 
+set args=0
+for %%x in (%*) do set /A args+=1
+
+if %args% lss 2 (
+  echo specify seconds and command
+  exit 1
+)
+
 set sec=%1
 :: 第2引数以降(=コマンド部分)のを取得する
 :: https://stackoverflow.com/a/26732879/6389347
